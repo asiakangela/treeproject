@@ -1,0 +1,28 @@
+#TRESS
+#A tree is a type of data structure that is often used to represent hierrarchical data.In computer science,
+#trees grow downwardso the top of the tree uis the root.Each element on the tree is called a node.
+#TYPES OF TREES
+#GENERAL TREE: a tree is called a general tree when there is no constraint imposed on the hierrarchy of the tree.
+#In a general tree, each node can have infinite number of children.
+#BINARY TREES: these are special type of trees where nodes can only havetwo children.
+#N-ary Tree: the maximum number of children a node can have is limited to N.
+#Red-black tree, AVL tree and also the Binary search tree.
+#Things to take note of:
+#A node can only have one parent but multiple children
+#Nodes that do not have any children are called leaf nodes.
+class NodeTree:
+    def _init_(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+class Solution:
+    def isSameTree(self, p: NodeTree, q: NodeTree) -> bool:
+        if not p and not q:
+            return True
+        if not p or not q:
+            return False
+        if p.val != q.val:
+            return False
+
+        return (self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right))
